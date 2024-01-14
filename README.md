@@ -1,1 +1,15 @@
-This React template, using Vite, features scripts for development, building, linting, and previewing. Dependencies include React, React Router, Redux Toolkit, Yup for validation, and Pico CSS for styling.
+# react-template
+
+This React template, powered by Vite, includes essential scripts for development, building, linting, and previewing.
+
+## Dependencies
+
+- React
+- React Router
+- Redux Toolkit
+- Yup (for validation)
+- Pico CSS (for styling)
+
+## Integration with JSONPlaceholder
+
+The project seamlessly integrates with JSONPlaceholder, providing a simulated REST API for testing and development purposes.
