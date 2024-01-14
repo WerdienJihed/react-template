@@ -1,0 +1,1 @@
+This React template, using Vite, features scripts for development, building, linting, and previewing. Dependencies include React, React Router, Redux Toolkit, Yup for validation, and Pico CSS for styling.
