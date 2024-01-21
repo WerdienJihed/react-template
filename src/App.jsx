@@ -16,6 +16,7 @@ import ItemPage from "./pages/item-page.jsx";
 import EditItemPage from "./pages/edit-item-page.jsx";
 import DeleteItemPage from "./pages/delete-item-page.jsx";
 import "./App.css";
+import SignupPage from "./pages/signup-page.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function App() {
           </Route>
           <Route element={<PublicRoute />}>
             <Route path="login" element={<LoginPage />} />
+            <Route path="signup" element={<SignupPage />} />
           </Route>
         </Routes>
       </div>
