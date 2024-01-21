@@ -22,7 +22,6 @@ export default () => {
   return (
     <div>
       <h1>Login page</h1>
-      <span style={{ color: "blue" }}>john.doe@example.com : john9870#</span>
       <span style={{ color: "red" }} id="error">
         {error}
       </span>
