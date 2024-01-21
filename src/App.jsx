@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/navbar.jsx";
 import HomePage from "./pages/home-page.jsx";
 import AboutPage from "./pages/about-page.jsx";
 import PrivateRoute from "./containers/private-route.jsx";
+import PublicRoute from "./containers/public-route.jsx";
 import NotFoundPage from "./pages/not-found-page.jsx";
 import ProfilePage from "./pages/profile-page.jsx";
 import LoginPage from "./pages/login-page.jsx";
@@ -26,40 +27,22 @@ function App() {
       <Navbar />
       <div className="container">
         <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <PrivateRoute>
-                <HomePage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="profile"
-            element={
-              <PrivateRoute>
-                <ProfilePage />
-              </PrivateRoute>
-            }
-          />
+          <Route exact path="/" element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
-          <Route
-            path="login"
-            element={
-              <PrivateRoute>
-                <LoginPage />
-              </PrivateRoute>
-            }
-          />
-          <Route path="items">
-            <Route index element={<ItemsPage />} />
-            <Route path=":id" element={<ItemPage />} />
-            <Route path="new" element={<AddItemPage />} />
-            <Route path=":id/edit" element={<EditItemPage />} />
-            <Route path=":id/delete" element={<DeleteItemPage />} />
-          </Route>
           <Route path="*" element={<NotFoundPage />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="items">
+              <Route index element={<ItemsPage />} />
+              <Route path=":id" element={<ItemPage />} />
+              <Route path="new" element={<AddItemPage />} />
+              <Route path=":id/edit" element={<EditItemPage />} />
+              <Route path=":id/delete" element={<DeleteItemPage />} />
+            </Route>
+          </Route>
+          <Route element={<PublicRoute />}>
+            <Route path="login" element={<LoginPage />} />
+          </Route>
         </Routes>
       </div>
     </>
