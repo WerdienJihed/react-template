@@ -9,18 +9,16 @@ export const loginWithEmailAndPassword = async (email, password) => {
         location: "USA",
       };
     } else {
-      throw new Error(
-        "Invalid username or password. Please check your credentials and try again."
-      );
+      const error = new Error();
+      error.name = "ServerError";
+      error.message =
+        "Invalid username or password. Please check your credentials and try again.";
+      throw error;
     }
     // end placeholder code
   } catch (err) {
-    const errMessage = err.message;
-    console.error(errMessage, err);
-    let error = new Error();
-    error.name = "ServerError";
-    error.message = errMessage;
-    throw error;
+    console.error("Error login in with email and password", err);
+    throw err;
   }
 };
 
@@ -29,6 +27,7 @@ export const logout = async () => {
     // placeholder code ..
     // end placeholder code
   } catch (err) {
+    console.error("Error login out :", err);
     throw err;
   }
 };
@@ -45,13 +44,8 @@ export const signup = async (userInfo) => {
     };
     // end placeholder code
   } catch (err) {
-    debugger;
-    const errMessage = err.message;
-    console.error(errMessage, err);
-    let error = new Error();
-    error.name = "ServerError";
-    error.message = errMessage;
-    throw error;
+    console.error("Error signing up: ", err);
+    throw err;
   }
 };
 
@@ -59,7 +53,7 @@ export const deleteAccount = async () => {
   try {
     // code ..
   } catch (err) {
-    console.error("Error deleting account:", error);
+    console.error("Error deleting account: ", err);
     throw err;
   }
 };

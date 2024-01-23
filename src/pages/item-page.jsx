@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 
-export default () => {
+const ItemPage = () => {
   const params = useParams();
   const users = useSelector((state) => state.users.data);
   const user = users.find((user) => user.id == params.id);
@@ -17,3 +17,5 @@ export default () => {
     <div>Not Found</div>
   );
 };
+
+export default ItemPage;

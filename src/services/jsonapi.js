@@ -45,46 +45,82 @@ export const handleDelete = async (endpoint, id) => {
 };
 
 const getUsers = async () => {
-  const response = await fetch(`${baseURL}/users?_start=0&_limit=3`);
-  const result = await response.json();
-  return result;
+  try {
+    const response = await fetch(`${baseURL}/users?_start=0&_limit=3`);
+    const result = await response.json();
+    return result;
+  } catch (err) {
+    let error = new Error();
+    error.name = "ServerError";
+    error.message = err.message;
+    throw error;
+  }
 };
 
 const getUser = async (id) => {
-  const response = await fetch(`${baseURL}/users/${id}`);
-  const result = await response.json();
-  if (result.status == 400) throw new Error("Record not found!");
-  return result;
+  try {
+    const response = await fetch(`${baseURL}/users/${id}`);
+    const result = await response.json();
+    if (result.status == 400) throw new Error("Record not found!");
+    return result;
+  } catch (err) {
+    let error = new Error();
+    error.name = "ServerError";
+    error.message = err.message;
+    throw error;
+  }
 };
 
 const createUser = async (record) => {
-  const response = await fetch(`${baseURL}/users`, {
-    method: "POST",
-    body: JSON.stringify(record),
-    headers: {
-      "Content-type": "application/json",
-    },
-  });
-  const result = await response.json();
-  return result;
+  try {
+    const response = await fetch(`${baseURL}/users`, {
+      method: "POST",
+      body: JSON.stringify(record),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    const result = await response.json();
+    return result;
+  } catch (err) {
+    let error = new Error();
+    error.name = "ServerError";
+    error.message = err.message;
+    throw error;
+  }
 };
 
 const updateUser = async (id, record) => {
-  const response = await fetch(`${baseURL}/users/${id}`, {
-    method: "PUT",
-    body: JSON.stringify(record),
-    headers: {
-      "Content-type": "application/json",
-    },
-  });
-  const result = await response.json();
-  return result;
+  try {
+    const response = await fetch(`${baseURL}/users/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(record),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    const result = await response.json();
+    return result;
+  } catch (err) {
+    let error = new Error();
+    error.name = "ServerError";
+    error.message = err.message;
+    throw error;
+  }
 };
 
 const deleteUser = async (id) => {
-  const response = await fetch(`${baseURL}/users/${id}`, {
-    method: "DELETE",
-  });
-  const result = await response.json();
-  return id;
+  try {
+    const response = await fetch(`${baseURL}/users/${id}`, {
+      method: "DELETE",
+    });
+    // eslint-disable-next-line no-unused-vars
+    const result = await response.json();
+    return id;
+  } catch (err) {
+    let error = new Error();
+    error.name = "ServerError";
+    error.message = err.message;
+    throw error;
+  }
 };

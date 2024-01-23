@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-export default () => {
+const ProfilePage = () => {
   const user = useSelector((state) => state.auth.data);
   return (
     <div>
@@ -14,3 +14,5 @@ export default () => {
     </div>
   );
 };
+
+export default ProfilePage;

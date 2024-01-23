@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { deleteUser } from "../redux-store/users-slice";
 
-export default () => {
+const DeleteItemPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -26,3 +26,5 @@ export default () => {
     <div>Not Found</div>
   );
 };
+
+export default DeleteItemPage;

@@ -3,7 +3,7 @@ import { loginWithEmailAndPassword } from "./../redux-store/auth-slice.js";
 import { loginSchema, validate } from "../utils/form-validator";
 import { useDispatch } from "react-redux";
 
-export default () => {
+const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -55,3 +55,5 @@ export default () => {
     </div>
   );
 };
+
+export default LoginPage;

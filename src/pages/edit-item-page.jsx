@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { updateUser } from "../redux-store/users-slice";
 import { userSchema, validate } from "../utils/form-validator";
 
-export default () => {
+const EditItemPage = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
@@ -60,3 +60,5 @@ export default () => {
     <div>Not Found</div>
   );
 };
+
+export default EditItemPage;

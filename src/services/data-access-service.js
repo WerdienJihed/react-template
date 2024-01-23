@@ -8,16 +8,12 @@ import {
 
 export const exists = async (resource, id) => {
   try {
-    await handleGet(resource, id);
+    const record = await handleGet(resource, id);
+    if (!record) return false;
     return true;
   } catch (err) {
-    const errMessage = `Error searching record in : ${resource}`;
-    console.error(errMessage, err);
-    if (err.message === "Record not found!") return false;
-    let error = new Error();
-    error.name = "ServerError";
-    error.message = errMessage;
-    throw error;
+    console.error(`Error searching record in : ${resource}`, err);
+    throw err;
   }
 };
 
@@ -26,12 +22,8 @@ export const get = async (resource, id) => {
     const data = await handleGet(resource, id);
     return data;
   } catch (err) {
-    const errMessage = `Error getting record from : ${resource}`;
-    console.error(errMessage, err);
-    let error = new Error();
-    error.name = "ServerError";
-    error.message = errMessage;
-    throw error;
+    console.error(`Error getting record from : ${resource}`, err);
+    throw err;
   }
 };
 
@@ -40,12 +32,8 @@ export const getAll = async (resource) => {
     const data = await handleGetAll(resource);
     return data;
   } catch (err) {
-    const errMessage = `Error getting list from : ${resource}`;
-    console.error(errMessage, err);
-    let error = new Error();
-    error.name = "ServerError";
-    error.message = errMessage;
-    throw error;
+    console.error(`Error getting list from : ${resource}`, err);
+    throw err;
   }
 };
 
@@ -54,12 +42,8 @@ export const add = async (resource, record) => {
     const data = await handleCreate(resource, record);
     return data;
   } catch (err) {
-    const errMessage = `Error adding record to : ${resource}`;
-    console.error(errMessage, err);
-    let error = new Error();
-    error.name = "ServerError";
-    error.message = errMessage;
-    throw error;
+    console.error(`Error adding record to : ${resource}`, err);
+    throw err;
   }
 };
 
@@ -68,12 +52,8 @@ export const update = async (resource, id, record) => {
     const data = await handleUpdate(resource, id, record);
     return data;
   } catch (err) {
-    const errMessage = `Error updating record in: ${resource}`;
-    console.error(errMessage, err);
-    let error = new Error();
-    error.name = "ServerError";
-    error.message = errMessage;
-    throw error;
+    console.error(`Error updating record in: ${resource}`, err);
+    throw err;
   }
 };
 
@@ -82,11 +62,7 @@ export const remove = async (resource, id) => {
     const data = await handleDelete(resource, id);
     return data;
   } catch (err) {
-    const errMessage = `Error deleting record from : ${resource}`;
-    console.error(errMessage, err);
-    let error = new Error();
-    error.name = "ServerError";
-    error.message = errMessage;
-    throw error;
+    console.error(`Error deleting record from : ${resource}`, err);
+    throw err;
   }
 };

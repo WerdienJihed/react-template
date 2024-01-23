@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
 import { logout } from "../../redux-store/auth-slice";
 
 const UserNavLinks = ({ user }) => {
@@ -53,7 +54,7 @@ const GestNavLinks = () => {
   );
 };
 
-export default () => {
+const Navbar = () => {
   const user = useSelector((state) => state.auth.data);
   const navigate = useNavigate();
 
@@ -68,3 +69,12 @@ export default () => {
     </nav>
   );
 };
+
+UserNavLinks.propTypes = {
+  user: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+  }),
+};
+
+export default Navbar;

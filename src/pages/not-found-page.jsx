@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default () => {
+const NotFoundPage = () => {
   return (
     <div>
       <h2>Not Found</h2>
@@ -9,3 +9,5 @@ export default () => {
     </div>
   );
 };
+
+export default NotFoundPage;

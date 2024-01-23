@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import { getUsers } from "./redux-store/users-slice.js";
@@ -22,7 +22,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers());
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <Navbar />

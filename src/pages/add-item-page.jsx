@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { userSchema, validate } from "../utils/form-validator";
 import { addUser } from "../redux-store/users-slice";
 
-export default () => {
+const AddItemPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [name, setName] = useState("");
@@ -55,3 +55,5 @@ export default () => {
     </div>
   );
 };
+
+export default AddItemPage;

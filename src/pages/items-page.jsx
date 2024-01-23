@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-export default () => {
+const ItemsPage = () => {
   const { data, loading, error } = useSelector((state) => state.users);
   const navigate = useNavigate();
 
@@ -41,3 +41,5 @@ export default () => {
     </div>
   );
 };
+
+export default ItemsPage;

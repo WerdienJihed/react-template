@@ -3,7 +3,7 @@ import { signup } from "./../redux-store/auth-slice.js";
 import { signupSchema, validate } from "../utils/form-validator";
 import { useDispatch } from "react-redux";
 
-export default () => {
+const SignupPage = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -109,3 +109,5 @@ export default () => {
     </div>
   );
 };
+
+export default SignupPage;
