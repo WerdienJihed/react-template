@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { updateUser } from "../redux-store/users-slice";
 import { userSchema, validate } from "../utils/form-validator";
+import ErrorWrapper from "../common/error-wrapper";
 
 const EditItemPage = () => {
   const dispatch = useDispatch();
@@ -15,25 +16,24 @@ const EditItemPage = () => {
 
   const [name, setName] = useState(user ? user.name : "");
   const [email, setEmail] = useState(user ? user.email : "");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
     try {
       await validate(userSchema, { name, email });
       dispatch(updateUser({ id: user.id, record: { name, email } }));
       navigate("/items");
     } catch (err) {
-      setError(err.message);
+      setError(err);
     }
   };
 
   return user ? (
     <div>
       <h2>Edit User</h2>
-      <span style={{ color: "red" }} id="error">
-        {error}
-      </span>
+      {error && <ErrorWrapper error={error} />}
       <form onSubmit={handleSubmit}>
         <label>
           Name:

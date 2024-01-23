@@ -2,7 +2,7 @@ import { useState } from "react";
 import { signup } from "./../redux-store/auth-slice.js";
 import { signupSchema, validate } from "../utils/form-validator";
 import { useDispatch } from "react-redux";
-
+import ErrorWrapper from "../common/error-wrapper.jsx";
 const SignupPage = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -15,7 +15,7 @@ const SignupPage = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setError("");
+    setError(null);
     try {
       let userInfo = {
         firstName,
@@ -28,19 +28,13 @@ const SignupPage = () => {
       await validate(signupSchema, userInfo);
       await dispatch(signup(userInfo)).unwrap();
     } catch (err) {
-      if (err.name === "ValidationError" || err.name === "ServerError")
-        setError(err.message);
-      else {
-        setError("Error signing up");
-      }
+      setError(err);
     }
   };
   return (
     <div>
       <h1>Sign up page</h1>
-      <span style={{ color: "red" }} id="error">
-        {error}
-      </span>
+      {error && <ErrorWrapper error={error} />}
       <form onSubmit={handleSignup}>
         <div>
           <label htmlFor="firstName">

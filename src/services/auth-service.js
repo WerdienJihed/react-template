@@ -17,7 +17,7 @@ export const loginWithEmailAndPassword = async (email, password) => {
     }
     // end placeholder code
   } catch (err) {
-    console.error("Error login in with email and password", err);
+    console.error("Error login in with email and password: ", err);
     throw err;
   }
 };

@@ -2,29 +2,27 @@ import { useState } from "react";
 import { loginWithEmailAndPassword } from "./../redux-store/auth-slice.js";
 import { loginSchema, validate } from "../utils/form-validator";
 import { useDispatch } from "react-redux";
-
+import ErrorWrapper from "../common/error-wrapper";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError("");
+    setError(null);
     try {
       await validate(loginSchema, { email, password });
       await dispatch(loginWithEmailAndPassword({ email, password })).unwrap();
     } catch (err) {
-      setError(err.message);
+      setError(err);
     }
   };
   return (
     <div>
       <h1>Login page</h1>
-      <span style={{ color: "red" }} id="error">
-        {error}
-      </span>
+      {error && <ErrorWrapper error={error} />}
       <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="email">
