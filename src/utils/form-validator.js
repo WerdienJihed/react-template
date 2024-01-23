@@ -9,13 +9,7 @@ export const userSchema = object({
 
 export const loginSchema = object({
   email: string().required("Email is required").email("Invalid email address"),
-  password: string()
-    .required("Password is required")
-    .min(8, "Password must be at least 8 characters")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
-    ),
+  password: string().required("Password is required"),
 });
 
 export const signupSchema = object({
